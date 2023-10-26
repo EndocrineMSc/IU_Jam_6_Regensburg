@@ -33,9 +33,11 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         RuntimeManager.GetBus("bus:/").setVolume(MasterVolume);
         RuntimeManager.GetBus("bus:/Music").setVolume(MusicVolume);
         RuntimeManager.GetBus("bus:/SFX").setVolume(SoundVolume);
+        */
     }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPosition)

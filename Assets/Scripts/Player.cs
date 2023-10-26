@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float CurrentEnergy { get; private set; }
 
     private bool _isTouchingTrash;
+    private bool _isTouchingPad;
     private Trash _trashInContact;
 
     #endregion
@@ -45,6 +46,9 @@ public class Player : MonoBehaviour
             _trashInContact = trash;
             _isTouchingTrash = true;
         }
+
+        if (collision.gameObject.TryGetComponent(out EnergyPad _))
+            _isTouchingPad = true;
     }
 
     private void OnCollisionExit(Collision collision)
@@ -54,6 +58,9 @@ public class Player : MonoBehaviour
             _trashInContact = null;
             _isTouchingTrash = false;
         }
+
+        if (collision.gameObject.TryGetComponent(out EnergyPad _))
+            _isTouchingPad = false;
     }
 
     private void Update()
@@ -63,11 +70,23 @@ public class Player : MonoBehaviour
 
         if (CurrentEnergy >= _minimumEnergyCapacity)
             ShowEnoughEnergy();
+
+        if (_isTouchingPad && CurrentEnergy >= _minimumEnergyCapacity)
+            LoseStoredEnergy();
     }
 
     private void ShowEnoughEnergy()
     {
         //do some player feedback
+    }
+
+    private void LoseStoredEnergy()
+    {
+        CurrentEnergy = 0;
+
+        var trashInScene = FindObjectsOfType<Trash>();
+        if (trashInScene.Length <= 0)
+            StageHandler.Instance.RaiseStageVoiceLine();
     }
 
     public static void RaiseTrashConsumed(float size)
