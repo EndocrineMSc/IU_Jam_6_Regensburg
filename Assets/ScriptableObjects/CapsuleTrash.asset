@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef242a478cf67441b2ae74563870a13, type: 3}
+  m_Name: CapsuleTrash
+  m_EditorClassIdentifier: 
+  <Size>k__BackingField: 5
+  <Energy>k__BackingField: 100
+  <TrashMesh>k__BackingField: {fileID: 10208, guid: 0000000000000000e000000000000000,
+    type: 0}
+  <TrashMaterial>k__BackingField: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d,
+    type: 2}
