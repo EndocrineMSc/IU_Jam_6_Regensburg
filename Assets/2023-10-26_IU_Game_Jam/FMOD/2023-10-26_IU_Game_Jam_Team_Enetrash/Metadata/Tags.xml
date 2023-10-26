@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MasterTagFolder" id="{c2366b8d-151e-4619-9298-77c1c0e068e1}">
+		<property name="name">
+			<value>Master</value>
+		</property>
+		<relationship name="items">
+			<destination>{6fbd21d9-a474-47aa-bc3e-63b522f18851}</destination>
+			<destination>{ba631509-25a4-42fc-8e9d-52573ba550fc}</destination>
+			<destination>{e88ca01f-f9fb-4969-820b-95b8e91729ac}</destination>
+			<destination>{57d4c3cf-ced9-4b67-a9f4-54915aed198f}</destination>
+			<destination>{179356be-7dea-4079-a6db-6cdcac26227c}</destination>
+			<destination>{f1e05700-8aa9-4d9c-ba42-ad6b4f621514}</destination>
+			<destination>{669fe12a-441c-4a73-8598-d95234f9861b}</destination>
+			<destination>{516a6e7f-2f54-4000-9184-4795e1b91954}</destination>
+		</relationship>
+	</object>
+	<object class="Tag" id="{6fbd21d9-a474-47aa-bc3e-63b522f18851}">
+		<property name="name">
+			<value>Player</value>
+		</property>
+	</object>
+	<object class="Tag" id="{ba631509-25a4-42fc-8e9d-52573ba550fc}">
+		<property name="name">
+			<value>Movement</value>
+		</property>
+	</object>
+	<object class="Tag" id="{e88ca01f-f9fb-4969-820b-95b8e91729ac}">
+		<property name="name">
+			<value>SFX</value>
+		</property>
+	</object>
+	<object class="Tag" id="{57d4c3cf-ced9-4b67-a9f4-54915aed198f}">
+		<property name="name">
+			<value>Music</value>
+		</property>
+	</object>
+	<object class="Tag" id="{179356be-7dea-4079-a6db-6cdcac26227c}">
+		<property name="name">
+			<value>Menu</value>
+		</property>
+	</object>
+	<object class="Tag" id="{f1e05700-8aa9-4d9c-ba42-ad6b4f621514}">
+		<property name="name">
+			<value>Ambience</value>
+		</property>
+	</object>
+	<object class="Tag" id="{669fe12a-441c-4a73-8598-d95234f9861b}">
+		<property name="name">
+			<value>Dialogue</value>
+		</property>
+	</object>
+	<object class="Tag" id="{516a6e7f-2f54-4000-9184-4795e1b91954}">
+		<property name="name">
+			<value>NPC</value>
+		</property>
+	</object>
+</objects>
