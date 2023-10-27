@@ -56,7 +56,8 @@ public class VoiceOverSource : MonoBehaviour
 
             var description = FMODUnity.RuntimeManager.GetEventDescription(VoiceLines[index]);
             description.getLength(out int lengthInMilliseconds);
-            var waitTime = lengthInMilliseconds / 1000;
+            //var waitTime = lengthInMilliseconds / 1000;
+            var waitTime = 6f;
 
             if (index % 2 == 0 && VoiceLines.Count > index)
                 StartCoroutine(TriggerNextVoiceLine(waitTime));

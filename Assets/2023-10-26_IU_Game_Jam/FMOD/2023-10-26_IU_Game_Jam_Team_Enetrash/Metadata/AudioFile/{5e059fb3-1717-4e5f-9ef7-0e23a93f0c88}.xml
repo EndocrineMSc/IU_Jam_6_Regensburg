@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{5e059fb3-1717-4e5f-9ef7-0e23a93f0c88}">
+		<property name="assetPath">
+			<value>Main Theme Enetrash_4_4_130-117_bpm_001_1930.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>66</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{58ea5416-ddec-48a9-9a1f-040192dbb478}</destination>
+		</relationship>
+	</object>
+</objects>

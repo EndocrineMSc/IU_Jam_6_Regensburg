@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: TestCollection
   m_EditorClassIdentifier: 
   <TrashList>k__BackingField:
-  - {fileID: 11400000, guid: 888d22ae7ff83864b9a70f797c207c62, type: 2}
-  - {fileID: 11400000, guid: e35b73cf6504f744aa182c63ba94e87f, type: 2}
+  - {fileID: 11400000, guid: 982cf7034ffb5ad4cbc081cac7b2b066, type: 2}
+  - {fileID: 11400000, guid: fe8d4324a28ff9c4f81428650e334a09, type: 2}
+  - {fileID: 11400000, guid: 614322538f8b41a4280f47775280c884, type: 2}
+  - {fileID: 11400000, guid: 17c40ffd536c0af41a567c2bb412259b, type: 2}

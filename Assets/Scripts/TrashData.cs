@@ -9,4 +9,5 @@ public class TrashData : ScriptableObject
     [field: SerializeField] public float Energy { get; private set; }
     [field: SerializeField] public Mesh TrashMesh { get; private set; }
     [field: SerializeField] public Material TrashMaterial { get; private set; }
+    [field: SerializeField] public Vector3 Scale { get; private set; } 
 }

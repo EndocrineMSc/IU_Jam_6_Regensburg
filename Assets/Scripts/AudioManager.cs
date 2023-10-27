@@ -15,8 +15,8 @@ public class AudioManager : MonoBehaviour
     [field: SerializeField] public EventReference LevelMusic { get; private set; }
 
     public float MasterVolume { get; private set; } = 1;
-    public float MusicVolume { get; private set; } = 0.4f;
-    public float SoundVolume { get; private set; } = 0.8f;
+    public float MusicVolume { get; private set; } = 1f;
+    public float SoundVolume { get; private set; } = 1f;
 
     private void Awake()
     {
@@ -31,13 +31,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        //PlayMenuMusic();
+    }
+
     private void Update()
     {
-        /*
         RuntimeManager.GetBus("bus:/").setVolume(MasterVolume);
-        RuntimeManager.GetBus("bus:/Music").setVolume(MusicVolume);
-        RuntimeManager.GetBus("bus:/SFX").setVolume(SoundVolume);
-        */
+        //RuntimeManager.GetBus("bus:/Music").setVolume(MusicVolume);
+        //RuntimeManager.GetBus("bus:/SFX").setVolume(SoundVolume);
     }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPosition)

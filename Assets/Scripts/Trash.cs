@@ -42,6 +42,7 @@ public class Trash : MonoBehaviour
         GetComponent<MeshRenderer>().material = Data.TrashMaterial;
         gameObject.AddComponent(typeof(MeshCollider));
         GetComponent<MeshCollider>().convex = true;
+        transform.localScale = Data.Scale;
     }
 
     public float ConsumeTrash()

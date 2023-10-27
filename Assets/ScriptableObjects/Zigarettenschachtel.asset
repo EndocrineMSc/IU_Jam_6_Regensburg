@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef242a478cf67441b2ae74563870a13, type: 3}
+  m_Name: Zigarettenschachtel
+  m_EditorClassIdentifier: 
+  <Size>k__BackingField: 12
+  <Energy>k__BackingField: 122
+  <TrashMesh>k__BackingField: {fileID: -5495902117074765545, guid: b6b17f9003ed2174796c322906610d39,
+    type: 3}
+  <TrashMaterial>k__BackingField: {fileID: 2100000, guid: a270aa57a106daa4e851244d03c5ef83,
+    type: 2}
+  <Scale>k__BackingField: {x: 250, y: 250, z: 250}
