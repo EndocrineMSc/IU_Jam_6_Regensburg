@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef242a478cf67441b2ae74563870a13, type: 3}
   m_Name: Zigarette
   m_EditorClassIdentifier: 
-  <Size>k__BackingField: 75
-  <Energy>k__BackingField: 1000
+  <Size>k__BackingField: 10
+  <Energy>k__BackingField: 20
   <TrashMesh>k__BackingField: {fileID: 2534964839176971238, guid: 216a45d60e89a874e9549b3b85a61fcf,
     type: 3}
   <TrashMaterial>k__BackingField: {fileID: 2100000, guid: da62e82f0d4fa414aa291d29ea0fd069,
     type: 2}
-  <Scale>k__BackingField: {x: 75, y: 75, z: 75}
+  <Scale>k__BackingField: {x: 100, y: 100, z: 100}

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 {
     #region Fields and Properties
 
-    private float _currentSize = 1000;
+    private float _currentSize = 10;
     private readonly float _minimumEnergyCapacity = 100;
     public float CurrentEnergy { get; private set; }
 
@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
 
     public static bool BadEndingTriggered;
     public static bool GoodEndingTriggered;
+
+    [SerializeField] private ParticleSystem _particleSystem;
 
     #endregion
 
@@ -91,6 +93,11 @@ public class Player : MonoBehaviour
 
         if (_decisionTimer <= 0 && !BadEndingTriggered && !GoodEndingTriggered)
             RaiseGoodEnding();
+
+        var emission = _particleSystem.emission;
+        emission.rateOverTime = CurrentEnergy;
+
+        Debug.Log(CurrentEnergy);
     }
 
     private void ShowEnoughEnergy()
@@ -127,7 +134,7 @@ public class Player : MonoBehaviour
 
     private void ScaleSizeOnTrashConsumed(float size)
     {
-        var newScale = transform.localScale *= (1 + (size / 100));
+        var newScale = transform.localScale *= (1 + (size / 150));
         transform.DOScale(newScale, 1f);
         _currentSize += size;
     }

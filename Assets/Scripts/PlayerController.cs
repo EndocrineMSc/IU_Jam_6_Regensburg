@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-
     private void Update()
     {
         HandleInput();

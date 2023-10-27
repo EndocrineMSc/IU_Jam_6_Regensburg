@@ -72,7 +72,8 @@ public class TrashHandler : MonoBehaviour
         trash.SetUp(trashData);
 
         float speed = UnityEngine.Random.Range(_minSpeed, _maxSpeed);
-        trash.GetComponent<Rigidbody>().AddForce(Vector3.right * speed);
+        trash.GetComponent<Rigidbody>().AddForce(Vector3.right * speed); 
+        trash.GetComponent<Rigidbody>().AddForce(Vector3.down * speed);
 
         AvailableTrash.Add(trash);
     }

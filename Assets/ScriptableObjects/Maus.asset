@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f5370ca99a5ed4a85c9742961fef62, type: 3}
-  m_Name: TestCollection 2
+  m_Script: {fileID: 11500000, guid: bef242a478cf67441b2ae74563870a13, type: 3}
+  m_Name: Maus
   m_EditorClassIdentifier: 
-  <TrashList>k__BackingField:
-  - {fileID: 11400000, guid: 888d22ae7ff83864b9a70f797c207c62, type: 2}
-  - {fileID: 11400000, guid: e35b73cf6504f744aa182c63ba94e87f, type: 2}
+  <Size>k__BackingField: 0
+  <Energy>k__BackingField: 0
+  <TrashMesh>k__BackingField: {fileID: 0}
+  <TrashMaterial>k__BackingField: {fileID: 0}
+  <Scale>k__BackingField: {x: 0, y: 0, z: 0}
