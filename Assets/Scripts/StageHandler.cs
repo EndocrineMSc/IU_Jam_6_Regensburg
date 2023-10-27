@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageHandler : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class StageHandler : MonoBehaviour
     public event Action<int> OnStageVoiceLine;
 
     public int CurrentVoiceIndex { get; private set; } = 0;
+
+    [SerializeField] private Image _goodEndingImage;
+    [SerializeField] private Image _badEndingImage;
 
     #endregion
 
@@ -23,13 +28,33 @@ public class StageHandler : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void OnEnable()
+    {
+        Player.OnBadEndingTrigger += BadEnding;
+        Player.OnGoodEndingTrigger += GoodEnding;
+    }
+
+    private void OnDisable()
+    {
+        Player.OnBadEndingTrigger -= BadEnding;
+        Player.OnGoodEndingTrigger -= GoodEnding;
+    }
+
     public void RaiseStageVoiceLine()
     {
-        Debug.Log("Voiceline event invoked!");
         var index = CurrentVoiceIndex;
         OnStageVoiceLine?.Invoke(index);
         CurrentVoiceIndex++;
     }
 
+    private void BadEnding()
+    {
+        _badEndingImage.DOFade(1, 2f);
+    }
+
+    private void GoodEnding()
+    {
+        _goodEndingImage.DOFade(1, 2f);
+    }
     #endregion
 }

@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// - The player will increase in size
@@ -19,11 +21,21 @@ public class Player : MonoBehaviour
     private bool _isTouchingPad;
     private Trash _trashInContact;
 
+    [SerializeField] private TextMeshProUGUI _choiceText;
+    private float _decisionTimer = 15f;
+    private bool _isDecisionTime;
+
+    public static bool BadEndingTriggered;
+    public static bool GoodEndingTriggered;
+
     #endregion
 
     #region Events
 
     public static event Action<float> OnTrashConsumed;
+    public static event Action OnPlayerChoiceEnding;
+    public static event Action OnGoodEndingTrigger;
+    public static event Action OnBadEndingTrigger;
 
     #endregion
 
@@ -73,6 +85,12 @@ public class Player : MonoBehaviour
 
         if (_isTouchingPad && CurrentEnergy >= _minimumEnergyCapacity)
             LoseStoredEnergy();
+
+        if (_isDecisionTime)
+            _decisionTimer -= Time.deltaTime;
+
+        if (_decisionTimer <= 0 && !BadEndingTriggered && !GoodEndingTriggered)
+            RaiseGoodEnding();
     }
 
     private void ShowEnoughEnergy()
@@ -88,13 +106,23 @@ public class Player : MonoBehaviour
         if (trashInScene.Length <= 0)
         {
             CurrentEnergy = 0;
-            StageHandler.Instance.RaiseStageVoiceLine();
+
+            if (StageHandler.Instance.CurrentVoiceIndex < VoiceOverSource.Instance.VoiceLines.Count)
+            {
+                StageHandler.Instance.RaiseStageVoiceLine();
+            }
+            else
+            {
+                DisplayChoice();
+                OnPlayerChoiceEnding?.Invoke();
+                _isDecisionTime = true;
+            }
         }
     }
 
-    public static void RaiseTrashConsumed(float size)
+    private void DisplayChoice()
     {
-        OnTrashConsumed?.Invoke(size);
+        _choiceText.enabled = true;
     }
 
     private void ScaleSizeOnTrashConsumed(float size)
@@ -102,6 +130,23 @@ public class Player : MonoBehaviour
         var newScale = transform.localScale *= (1 + (size / 100));
         transform.DOScale(newScale, 1f);
         _currentSize += size;
+    }
+
+    public static void RaiseTrashConsumed(float size)
+    {
+        OnTrashConsumed?.Invoke(size);
+    }
+
+    public static void RaiseGoodEnding()
+    {
+        OnGoodEndingTrigger?.Invoke();
+        GoodEndingTriggered = true;
+    }
+
+    public static void RaiseBadEnding()
+    {
+        OnBadEndingTrigger?.Invoke();
+        BadEndingTriggered = true;
     }
 
     #endregion
