@@ -1,7 +1,9 @@
 using FMODUnity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class VoiceOverSource : MonoBehaviour
 {
@@ -29,6 +31,7 @@ public class VoiceOverSource : MonoBehaviour
     private void PlayVoiceLine(int index)
     {
         Debug.Log("Played voiceline with index: " + index);
+
         if (_voiceLines.Count >= index)
         {
             var voiceOrigin = index % 2 == 0 ? _profTransform.position : _muellerTransform.position;

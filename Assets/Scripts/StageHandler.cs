@@ -25,6 +25,7 @@ public class StageHandler : MonoBehaviour
 
     public void RaiseStageVoiceLine()
     {
+        Debug.Log("Voiceline event invoked!");
         var index = CurrentVoiceIndex;
         OnStageVoiceLine?.Invoke(index);
         CurrentVoiceIndex++;

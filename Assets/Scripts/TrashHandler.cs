@@ -1,4 +1,6 @@
+using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +13,12 @@ public class TrashHandler : MonoBehaviour
     [field: SerializeField] public List<TrashDataCollection> TrashWaves { get; private set; } = new();
     [SerializeField] private Trash _trashPrefab;
     [SerializeField] private Transform _trashSpawn;
-    [SerializeField] private float _maxSpeed = 100f;
+    [SerializeField] private float _minSpeed = 500f;
+    [SerializeField] private float _maxSpeed = 1000f;
+
+    [SerializeField] private Transform _hatch;
+    Vector3 _openHatchRotation = new(-40, -90, 0);
+    Vector3 _closedHatchRotation = new(-90, -90, 0);
 
     public List<Trash> AvailableTrash = new();
 
@@ -50,12 +57,7 @@ public class TrashHandler : MonoBehaviour
 
     private void SpawnNextTrashWave()
     {
-        if (TrashWaves.Count > 0)
-        {
-            var trashWave = TrashWaves[0];
-            TrashWaves.RemoveAt(0);
-            InstantiateTrashWave(trashWave);
-        }
+        StartCoroutine(TiltHatchThenSpawnWave());
     }
 
     private void InstantiateTrashWave(TrashDataCollection trashCollection)
@@ -69,7 +71,7 @@ public class TrashHandler : MonoBehaviour
         var trash = Instantiate(_trashPrefab, _trashSpawn.position, Quaternion.identity);
         trash.SetUp(trashData);
 
-        float speed = UnityEngine.Random.Range(0, _maxSpeed);
+        float speed = UnityEngine.Random.Range(_minSpeed, _maxSpeed);
         trash.GetComponent<Rigidbody>().AddForce(Vector3.right * speed);
 
         AvailableTrash.Add(trash);
@@ -78,6 +80,20 @@ public class TrashHandler : MonoBehaviour
     public static void RaiseSpawnNewTrash()
     {
         OnSpawnNewTrash?.Invoke();
+    }
+
+    private IEnumerator TiltHatchThenSpawnWave()
+    {
+        if (TrashWaves.Count > 0)
+        {
+            var trashWave = TrashWaves[0];
+            TrashWaves.RemoveAt(0);
+            _hatch.DORotate(_openHatchRotation, 2f);
+            yield return new WaitForSeconds(2);
+            InstantiateTrashWave(trashWave);
+            yield return new WaitForSeconds(0.2f);
+            _hatch.DORotate(_closedHatchRotation, 2f);
+        }
     }
 
     #endregion

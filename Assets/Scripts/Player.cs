@@ -82,11 +82,14 @@ public class Player : MonoBehaviour
 
     private void LoseStoredEnergy()
     {
-        CurrentEnergy = 0;
 
         var trashInScene = FindObjectsOfType<Trash>();
+
         if (trashInScene.Length <= 0)
+        {
+            CurrentEnergy = 0;
             StageHandler.Instance.RaiseStageVoiceLine();
+        }
     }
 
     public static void RaiseTrashConsumed(float size)
