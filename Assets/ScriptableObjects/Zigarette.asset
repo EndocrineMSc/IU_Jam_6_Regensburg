@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef242a478cf67441b2ae74563870a13, type: 3}
   m_Name: Zigarette
   m_EditorClassIdentifier: 
+  <Shape>k__BackingField: 0
   <Size>k__BackingField: 10
   <Energy>k__BackingField: 20
   <TrashMesh>k__BackingField: {fileID: 2534964839176971238, guid: 216a45d60e89a874e9549b3b85a61fcf,

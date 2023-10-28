@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef242a478cf67441b2ae74563870a13, type: 3}
   m_Name: "PapierM\xFCll"
   m_EditorClassIdentifier: 
+  <Shape>k__BackingField: 2
   <Size>k__BackingField: 10
   <Energy>k__BackingField: 100
   <TrashMesh>k__BackingField: {fileID: 289301614986012343, guid: d16ab6993a5ed324795fca8686281169,

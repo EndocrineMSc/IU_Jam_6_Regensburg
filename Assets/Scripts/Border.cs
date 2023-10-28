@@ -23,10 +23,4 @@ public class Border : MonoBehaviour
     {
         _collider.isTrigger = true;
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Player _))
-            Player.RaiseBadEnding();
-    }
 }

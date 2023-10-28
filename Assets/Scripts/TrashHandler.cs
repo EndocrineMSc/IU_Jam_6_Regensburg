@@ -1,4 +1,5 @@
 using DG.Tweening;
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,14 +14,15 @@ public class TrashHandler : MonoBehaviour
     [field: SerializeField] public List<TrashDataCollection> TrashWaves { get; private set; } = new();
     [SerializeField] private Trash _trashPrefab;
     [SerializeField] private Transform _trashSpawn;
-    [SerializeField] private float _minSpeed = 500f;
-    [SerializeField] private float _maxSpeed = 1000f;
+    [SerializeField] private float _speed = 250;
 
     [SerializeField] private Transform _hatch;
     Vector3 _openHatchRotation = new(-40, -90, 0);
     Vector3 _closedHatchRotation = new(-90, -90, 0);
 
     public List<Trash> AvailableTrash = new();
+
+    [SerializeField] private EventReference _hatchSound;
 
     #endregion
 
@@ -71,9 +73,7 @@ public class TrashHandler : MonoBehaviour
         var trash = Instantiate(_trashPrefab, _trashSpawn.position, Quaternion.identity);
         trash.SetUp(trashData);
 
-        float speed = UnityEngine.Random.Range(_minSpeed, _maxSpeed);
-        trash.GetComponent<Rigidbody>().AddForce(Vector3.right * speed); 
-        trash.GetComponent<Rigidbody>().AddForce(Vector3.down * speed);
+        trash.GetComponent<Rigidbody>().AddForce(Vector3.right * _speed); 
 
         AvailableTrash.Add(trash);
     }
@@ -90,10 +90,12 @@ public class TrashHandler : MonoBehaviour
             var trashWave = TrashWaves[0];
             TrashWaves.RemoveAt(0);
             _hatch.DORotate(_openHatchRotation, 2f);
+            AudioManager.Instance.PlayOneShot(_hatchSound, _hatch.position);
             yield return new WaitForSeconds(2);
             InstantiateTrashWave(trashWave);
             yield return new WaitForSeconds(0.2f);
             _hatch.DORotate(_closedHatchRotation, 2f);
+            AudioManager.Instance.PlayOneShot(_hatchSound, _hatch.position);
         }
     }
 

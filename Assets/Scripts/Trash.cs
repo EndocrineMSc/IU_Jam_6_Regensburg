@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Versioning;
@@ -38,11 +39,31 @@ public class Trash : MonoBehaviour
         Data = data;
         _energy = Data.Energy;
         _isSetUp = true;
+        transform.localScale = Data.Scale;
+        SetLooks();
+        AddCollider();
+    }
+
+    private void SetLooks()
+    {
         GetComponent<MeshFilter>().mesh = Data.TrashMesh;
         GetComponent<MeshRenderer>().material = Data.TrashMaterial;
-        gameObject.AddComponent(typeof(MeshCollider));
-        GetComponent<MeshCollider>().convex = true;
-        transform.localScale = Data.Scale;
+    }
+
+    private void AddCollider()
+    {
+        switch (Data.Shape)
+        {
+            case ColliderShape.Capsule:
+                gameObject.AddComponent<CapsuleCollider>(); 
+                break;
+            case ColliderShape.Box:
+                gameObject.AddComponent<BoxCollider>();
+                break;
+            case ColliderShape.Sphere:
+                gameObject.AddComponent<SphereCollider>();
+                break;
+        }
     }
 
     public float ConsumeTrash()

@@ -54,13 +54,8 @@ public class VoiceOverSource : MonoBehaviour
             var voiceOrigin = index % 2 == 0 ? _profTransform.position : _muellerTransform.position;
             AudioManager.Instance.PlayOneShot(VoiceLines[index], voiceOrigin);
 
-            var description = FMODUnity.RuntimeManager.GetEventDescription(VoiceLines[index]);
-            description.getLength(out int lengthInMilliseconds);
-            //var waitTime = lengthInMilliseconds / 1000;
-            var waitTime = 6f;
-
             if (index % 2 == 0 && VoiceLines.Count > index)
-                StartCoroutine(TriggerNextVoiceLine(waitTime));
+                StartCoroutine(TriggerNextVoiceLine(6f));
             else
                 TrashHandler.RaiseSpawnNewTrash();               
         }
@@ -74,12 +69,12 @@ public class VoiceOverSource : MonoBehaviour
 
     private void PlayGoodEndingLine()
     {
-        AudioManager.Instance.PlayOneShot(_goodEndingVoice, transform.position);
+        AudioManager.Instance.PlayOneShot(_goodEndingVoice, _muellerTransform.position);
     }
 
     private void PlayBadEndingLine()
     {
-        AudioManager.Instance.PlayOneShot(_badEndingVoice, transform.position);
+        AudioManager.Instance.PlayOneShot(_badEndingVoice, Camera.main.transform.position);
     }
 
     #endregion

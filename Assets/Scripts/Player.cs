@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI;
 using TMPro;
+using FMODUnity;
+using FMOD.Studio;
 
 /// <summary>
 /// - The player will increase in size
@@ -30,6 +31,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private ParticleSystem _particleSystem;
 
+    private EventInstance _metabolizeInstance;
+    [SerializeField] private EventReference _playerMetabolize;
+    [SerializeField] private EventReference _paperCrumble;
+
     #endregion
 
     #region Events
@@ -38,6 +43,7 @@ public class Player : MonoBehaviour
     public static event Action OnPlayerChoiceEnding;
     public static event Action OnGoodEndingTrigger;
     public static event Action OnBadEndingTrigger;
+    public static event Action<float> OnEnergyTransferred;
 
     #endregion
 
@@ -59,10 +65,17 @@ public class Player : MonoBehaviour
         {
             _trashInContact = trash;
             _isTouchingTrash = true;
+            AudioManager.Instance.PlayOneShot(_paperCrumble, transform.position);
+            //_metabolizeInstance.start();
         }
 
         if (collision.gameObject.TryGetComponent(out EnergyPad _))
             _isTouchingPad = true;
+    }
+
+    private void StopMetabolizeSound()
+    {
+        _metabolizeInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     private void OnCollisionExit(Collision collision)
@@ -71,6 +84,7 @@ public class Player : MonoBehaviour
         {
             _trashInContact = null;
             _isTouchingTrash = false;
+            //StopMetabolizeSound();
         }
 
         if (collision.gameObject.TryGetComponent(out EnergyPad _))
@@ -94,10 +108,11 @@ public class Player : MonoBehaviour
         if (_decisionTimer <= 0 && !BadEndingTriggered && !GoodEndingTriggered)
             RaiseGoodEnding();
 
+        if (transform.position.y < -10 && !BadEndingTriggered)
+            RaiseBadEnding();
+
         var emission = _particleSystem.emission;
         emission.rateOverTime = CurrentEnergy;
-
-        Debug.Log(CurrentEnergy);
     }
 
     private void ShowEnoughEnergy()
@@ -112,6 +127,7 @@ public class Player : MonoBehaviour
 
         if (trashInScene.Length <= 0)
         {
+            RaiseEnergyTransferred(CurrentEnergy);
             CurrentEnergy = 0;
 
             if (StageHandler.Instance.CurrentVoiceIndex < VoiceOverSource.Instance.VoiceLines.Count)
@@ -134,7 +150,7 @@ public class Player : MonoBehaviour
 
     private void ScaleSizeOnTrashConsumed(float size)
     {
-        var newScale = transform.localScale *= (1 + (size / 150));
+        var newScale = transform.localScale *= (1 + (size / 200));
         transform.DOScale(newScale, 1f);
         _currentSize += size;
     }
@@ -154,6 +170,11 @@ public class Player : MonoBehaviour
     {
         OnBadEndingTrigger?.Invoke();
         BadEndingTriggered = true;
+    }
+
+    public static void RaiseEnergyTransferred(float amount)
+    {
+        OnEnergyTransferred?.Invoke(amount);
     }
 
     #endregion

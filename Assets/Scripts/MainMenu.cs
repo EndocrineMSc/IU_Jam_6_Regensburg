@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
-using System.Collections;
-using UnityEngine.SceneManagement;
 using System;
 
 /// <summary>
@@ -52,7 +49,7 @@ public class MainMenu : MonoBehaviour
         _settingsButton.GetComponent<Button>().onClick.AddListener(OpenSettings);
         _creditsButton.GetComponent<Button>().onClick.AddListener(OpenCredits);
 
-        //AudioManager.Instance.PlayMenuMusic();
+        AudioManager.Instance.PlayMenuMusic();
     }
 
     public static void RaiseMainMenuOpened()
@@ -82,31 +79,24 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettings()
     {
-        PlayButtonClick();
         RaiseSettingsMenuOpened();
     }
 
     public void OpenCredits()
     {
-        PlayButtonClick();
         RaiseCreditsOpened();
     }
 
     public void NewGame()
     {
-        PlayButtonClick();
-        //AudioManager.Instance.StopMenuMusic();
-        //AudioManager.Instance.PlayLevelMusic();       
+        AudioManager.Instance.StopMenuMusic();
+        AudioManager.Instance.PlayLevelAmbience();
+        LoadHelper.LoadSceneWithLoadingScreen(SceneName.Endo_Scene);
     }
 
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    private void PlayButtonClick()
-    {
-        //AudioManager.Instance.PlaySoundEffectOnce(SFX._0001_ButtonClick);
     }
 
     #endregion

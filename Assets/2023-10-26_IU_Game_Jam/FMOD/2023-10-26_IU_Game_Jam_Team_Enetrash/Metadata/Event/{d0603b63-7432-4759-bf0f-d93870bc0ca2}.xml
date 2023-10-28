@@ -5,7 +5,7 @@
 			<value>Voice_Good_Ending</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{7df866d1-5790-4b3c-92a9-4f803797b19e}</destination>
@@ -61,7 +61,7 @@
 			<destination>{025148fc-693b-451c-9d49-f60ffcdd5381}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{c0608ba7-4b77-4cf4-ad2a-e1a6d7e8b04e}</destination>
+			<destination>{ac0da024-8450-4e31-a33a-0898f37cb7d2}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{4d94b009-3fd0-45b6-98f3-c720d282672b}" />
@@ -89,7 +89,7 @@
 	</object>
 	<object class="MultiSound" id="{cd4f5199-519f-410f-b026-f583ed1d9d92}">
 		<relationship name="sounds">
-			<destination>{e967612a-cc4b-4d3c-b54f-45e92f3b3220}</destination>
+			<destination>{43406c8b-42ed-40ac-9411-ef1f4e67b004}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{41201203-4c27-40a7-9a6d-969544e552d0}">
@@ -101,16 +101,14 @@
 	<object class="MixerBusEffectChain" id="{ca1729b8-76ba-477a-9e09-47c23def5004}">
 		<relationship name="effects">
 			<destination>{96682694-8b50-476b-9eb3-54fffc074067}</destination>
-			<destination>{45a0a6c1-c79f-48ef-af50-91c746f0b9b6}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a9877e3c-786f-4490-be83-128fe0b4b8f4}" />
-	<object class="SingleSound" id="{e967612a-cc4b-4d3c-b54f-45e92f3b3220}">
+	<object class="SingleSound" id="{43406c8b-42ed-40ac-9411-ef1f4e67b004}">
 		<relationship name="audioFile">
-			<destination>{5c30027d-1da7-4894-90df-8ac12980ab46}</destination>
+			<destination>{326d318b-85eb-4c6f-bbd7-1d2f8a39f228}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{2577d230-8acb-4879-949d-2f6a3bfcb01c}" />
 	<object class="MixerBusFader" id="{96682694-8b50-476b-9eb3-54fffc074067}" />
-	<object class="SpatialiserEffect" id="{45a0a6c1-c79f-48ef-af50-91c746f0b9b6}" />
 </objects>
